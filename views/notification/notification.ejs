@@ -1,0 +1,147 @@
+<%-include("../common/header.ejs")%>
+    <%-include("../common/Navbar.ejs")%>
+        <%-include("../common/Sidebar.ejs")%>
+            <!-- BEGIN: Content-->
+            <div class="app-content content ">
+                <div class="content-overlay"></div>
+                <div class="header-navbar-shadow"></div>
+                <div class="content-wrapper container-xxl p-0">
+                    <div class="content-body">
+                        <section id="responsive-datatable">
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-header border-bottom">
+                                        <h4 class="card-title"> Notification</h4>
+                                        
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card-DataTable table-responsive">
+                                    <table id="userTable" class="table table-hover-animation">
+                                        <thead>
+                                            <tr>
+                                                <th>S NO.</th>
+                                                <th>Report By</th>
+                                                <th>Report to</th>
+                                                <th>Message</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%notificationData.forEach(function(data,i) {%>
+                                                <tr>
+                                                    <td>
+                                                        <%=1+i%>
+                                                    </td>
+                                                    <td>
+                                                        <%=data.userId?.name%>
+                                                    </td>
+                                                    <td>
+                                                        <%=data.providerId?.name%>
+                                                    </td>
+                                                    <td>
+                                                        <%=data.message%>
+                                                    </td>
+
+
+                                                    <td>
+                                                        <a href="/notificationView/<%= data._id%>"
+                                                            class="btn btn-sm btn-outline-success"><i
+                                                                data-feather='eye'></i>
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+                                                <% } )%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>
+                    </section>
+                </div>
+            </div>
+            </div>
+
+            <div class=" sidenav-overlay">
+            </div>
+            <div class="drag-target"></div>
+            <%- include('../common/footer') %>
+                <script>
+                    setTimeout(function () {
+                        $("div.msg").fadeOut();
+                    }, 2000);
+                </script>
+
+                <script>
+                    $(document).ready(function () {
+                        $('#userTable').DataTable(); // Initialize DataTable for the user table
+                    });
+                </script>
+
+                <!-- <script>
+                                            function confirmDelete(id) {                                         
+                                                const swalWithBootstrapButtons = Swal.mixin({
+                                                    customClass: {
+                                                        confirmButton: 'btn btn-outline-danger btn-sm ',
+                                                        cancelButton: 'btn btn-outline-success btn-sm '
+                                                    },
+                                                    buttonsStyling: false
+                                                })
+                                                swalWithBootstrapButtons.fire({
+                                                    title: 'Are you sure?',
+                                                    text: "You won't be able to revert this!",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonText: 'Yes',
+                                                    cancelButtonText: 'No',
+                                                    reverseButtons: true
+                                                }).then((isConfirm) => {                                                                                               
+                                                    if (isConfirm.isConfirmed) {                                             
+                                                        $.ajax({
+                                                            url: "/deleteUser",
+                                                            type: 'post',
+                                                            data: {
+                                                                id: id
+                                                            },
+                                                            success: function (result) {
+                                                            }
+                                                        });
+                                                        swalWithBootstrapButtons.fire(
+                                                            'Deleted!',
+                                                            'Your file has been deleted.',
+                                                            'success'
+                                                        ).then(() => {
+                                                            location.reload();
+                                                        })
+                                                    } else {
+                                                        swalWithBootstrapButtons.fire(
+                                                            'Cancelled',
+                                                            'Your file is safe',
+                                                            'error'
+                                                        )
+                                                    }
+                                                })
+                                            }
+                                        </script> -->
+
+                <!-- <script>
+                                            function changeStatus(button) {
+                                                var _id = button.getAttribute('data-id');
+                                                var value = button.getAttribute('value');
+                                                $.ajax({
+                                                    type: "post",
+                                                    url: "/bookingStatus/" + _id,
+                                                    data: {
+                                                        status: value
+                                                    },
+                                                    success: function (data) {
+                                                        console.log(data); // Log the data received from the server
+                                                        window.location.reload(); // Refresh the entire page
+                                                    },
+                                                    error: function (error) {
+                                                        console.error(error.responseText);
+                                                    }
+                                                });
+                                            }
+                                        </script> -->

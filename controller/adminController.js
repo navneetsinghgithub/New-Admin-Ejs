@@ -1,6 +1,9 @@
 const mongoose = require("mongoose")
 const userModel = require("../model/userModel")
 const bookingModel = require("../model/bookingModel")
+const categoryModel = require("../model/categoryModel")
+const subCategoryModel = require("../model/subCategoryModel")
+
 const bcrypt = require("bcrypt")
 const saltRound =10
 const session = require("express-session")
@@ -15,6 +18,8 @@ module.exports = {
             const user = await userModel.find({role:1}).count()
             const provider = await userModel.find({role:2}).count()
            const boking = await bookingModel.find().count()
+           const category = await categoryModel.find().count()
+           const subCategory = await subCategoryModel.find().count()
       
            const monthlyBooking = await bookingModel.aggregate([
             {
@@ -60,6 +65,8 @@ module.exports = {
               user: user,
               provider: provider,
               boking:boking,
+              category:category,
+              subCategory:subCategory,
               monthBook,
               countBook,
             });

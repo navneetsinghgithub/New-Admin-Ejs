@@ -19,7 +19,7 @@ module.exports ={
         }
     },
 
-    booking: async (req, res) => {
+    bookingPage: async (req, res) => {
         try {
           if (!req.session.users) {
             return res.redirect("/loginPage")

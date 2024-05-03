@@ -6,6 +6,7 @@ const cmsController = require("../controller/cmsController")
 const categoryController = require("../controller/categoryController")
 const subCategoryController = require("../controller/subCategoryController");
 const bookingController = require('../controller/bookingController');
+const notificationController = require('../controller/notificationController');
 
 ///////////////////////////////Admin//////////////////////////
 router.get("/dashboard", adminController.dashboard)
@@ -66,13 +67,23 @@ router.post("/updateSubCategory", subCategoryController.updateSubCategory)
 router.post("/deleteSubCategory", subCategoryController.deleteSubCategory)
 
 ////////////////////////////BOOKING///////////////////
-router.get("/booking", bookingController.booking)
-
+router.get("/bookingPage", bookingController.bookingPage)
 router.post("/createBoking",bookingController.createBoking)
 router.get("/getBoking", bookingController.getBoking)
 router.get("/getSingleBoking/:id", bookingController.getSingleBoking)
 router.post("/bookingStatus/:id", bookingController.bookingStatus)
 router.get("/bookingView/:id", bookingController.bookingView)
+
+///////////////////////NOTIFICATION/////////////////////
+router.post("/createNotification",notificationController.createNotification)
+router.get("/notificationPage",notificationController.notificationPage)
+router.get("/getNotification", notificationController.getNotification)
+router.get("/notificationView/:id", notificationController.notificationView)
+router.get("/getSingleNotification/:id", notificationController.getSingleNotification)
+
+
+
+
 
 
 
