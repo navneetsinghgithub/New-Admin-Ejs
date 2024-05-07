@@ -8,6 +8,10 @@ const subCategoryController = require("../controller/subCategoryController");
 const bookingController = require('../controller/bookingController');
 const notificationController = require('../controller/notificationController');
 
+
+
+
+
 ///////////////////////////////Admin//////////////////////////
 router.get("/dashboard", adminController.dashboard)
 router.get("/loginPage", adminController.loginPage)
@@ -21,10 +25,6 @@ router.post("/changePassword", adminController.changePassword)
 router.get("/logout", adminController.logout)
 
 
-
-
-
-
 ///////////////////////User///////////////////////////
 router.post("/signup", userController.signup)
 router.get("/getUserPage", userController.getUserPage)
@@ -33,9 +33,6 @@ router.post("/userStatus/:id", userController.userStatus)
 router.get("/getProviderPage", userController.getProviderPage)
 router.get("/providerViewPage/:id", userController.providerViewPage)
 router.post("/ProStatus/:id", userController.ProStatus)
-
-
-
 
 
 ////////////////////////CMS////////////////////////
@@ -80,15 +77,6 @@ router.get("/notificationPage",notificationController.notificationPage)
 router.get("/getNotification", notificationController.getNotification)
 router.get("/notificationView/:id", notificationController.notificationView)
 router.get("/getSingleNotification/:id", notificationController.getSingleNotification)
-
-
-
-
-
-
-
-
-
 
 
 

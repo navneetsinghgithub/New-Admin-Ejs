@@ -33,7 +33,7 @@ const checkValidation = async (v) => {
 
 }
 
-failed = (res, message = "") => {
+const failed = (res, message = "") => {
     message =
         typeof message === "object"
             ? message.message
@@ -46,34 +46,48 @@ failed = (res, message = "") => {
         message: message,
         body: {},
     });
-},
-    success = (res, message = "", body = {}) => {
-        return res.status(200).json({
-            success: true,
-            code: 200,
-            message: message,
-            body: body,
-        });
-    },
+}
 
-    error = (res, err, req) => {
-        let code = typeof err === "object" ? (err.code ? err.code : 403) : 403;
-        let message =
-            typeof err === "object" ? (err.message ? err.message : "") : err;
-        if (req) {
-            req.flash("flashMessage", {
-                color: "error",
-                message,
-            });
-            const originalUrl = req.originalUrl.split("/")[1];
-            return res.redirect(`/${originalUrl}`);
-        }
-        return res.status(code).json({
-            success: false,
-            message: message,
-            code: code,
-            body: {},
+const success = (res, message = "", body = {}) => {
+    return res.status(200).json({
+        success: true,
+        code: 200,
+        message: message,
+        body: body,
+    });
+}
+
+const error = (res, err, req) => {
+    let code = typeof err === "object" ? (err.code ? err.code : 403) : 403;
+    let message =
+        typeof err === "object" ? (err.message ? err.message : "") : err;
+    if (req) {
+        req.flash("flashMessage", {
+            color: "error",
+            message,
         });
+        const originalUrl = req.originalUrl.split("/")[1];
+        return res.redirect(`/${originalUrl}`);
     }
+    return res.status(code).json({
+        success: false,
+        message: message,
+        code: code,
+        body: {},
+    });
+}
 
-module.exports = { imageupload, checkValidation, }
+module.exports = { imageupload, checkValidation, failed, success, error }
+
+
+// if (req.files !== null && req.files.image != undefined) {
+//     var imagesArr = Array.isArray(req.files.image)
+//       ? req.files.image
+//       : [req.files.image];
+//     var newImagesArr = [];
+//     for (let i in imagesArr) {
+//       var image = fileUpload(imagesArr[i], "resturantImage");
+//       newImagesArr.push(image);
+//     }
+//     req.body.image = newImagesArr;
+//   }

@@ -3,7 +3,7 @@ const userModel = require("../model/userModel")
 const bookingModel = require("../model/bookingModel")
 const categoryModel = require("../model/categoryModel")
 const subCategoryModel = require("../model/subCategoryModel")
-
+const {imageupload} = require("../middleware/helper")
 const bcrypt = require("bcrypt")
 const saltRound =10
 const session = require("express-session")
@@ -86,7 +86,7 @@ module.exports = {
     },
     login: async (req, res) => {
         try {
-            let login = await userModel.findOne({ email: req.body.email })
+            let login = await userModel.findOne({ email: req.body.email ,role:0})
             if (!login) {
                 req.flash("msg", "Data not found")
                 res.redirect('/loginPage')
@@ -157,11 +157,12 @@ module.exports = {
             }
             if (req.files && req.files.image.name) {
                 const image = req.files.image;
-                if (image) req.body.image = imageupload(image, "userImage");
+                if (image) req.body.image =imageupload(image, "userImage");
             }
             const updateAdminProfile = await userModel.findByIdAndUpdate({
                 _id: req.session.users._id
             }, { name: req.body.name, image: req.body.image, contact: req.body.contact }, { new: true })
+            console.log(updateAdminProfile,"-----updateAdminProfile----");
             let login = await userModel.findOne({ _id: req.session.users._id })
             req.session.users = login
             res.redirect("/dashboard")
@@ -187,7 +188,7 @@ module.exports = {
             const data = await userModel.findOne({ _id: req.session.users._id })
             const decryptPassword = await bcrypt.compare(req.body.oldPassword, data.password)
             if (decryptPassword == false) {
-                req.flash('error', 'Old pass does not match')
+                req.flash('error', 'Old password does not match')
             }
             const encryptPassword = await bcrypt.hash(req.body.newPassword, saltRound)
             data.password = encryptPassword
