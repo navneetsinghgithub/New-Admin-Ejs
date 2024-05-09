@@ -7,6 +7,8 @@ const categoryController = require("../controller/categoryController")
 const subCategoryController = require("../controller/subCategoryController");
 const bookingController = require('../controller/bookingController');
 const notificationController = require('../controller/notificationController');
+const contactUsController = require('../controller/contactUsController');
+
 
 
 
@@ -78,7 +80,12 @@ router.get("/getNotification", notificationController.getNotification)
 router.get("/notificationView/:id", notificationController.notificationView)
 router.get("/getSingleNotification/:id", notificationController.getSingleNotification)
 
-
+//////////////////////////CONTACT US/////////////////////////
+router.post("/createContactus",contactUsController.createContactus)
+router.get("/contactUsPage",contactUsController.contactUsPage)
+// router.get("/getContactUs", contactUsController.getContactUs)
+router.get("/contactUsView/:id", contactUsController.contactUsView)
+router.get("/getSingleContactUs/:id", contactUsController.getSingleContactUs)
 
 module.exports = router;
 

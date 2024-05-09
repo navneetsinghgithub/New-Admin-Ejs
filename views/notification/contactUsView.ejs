@@ -32,32 +32,52 @@
                                                             <div class="col-12 col-sm-6">
                                                                 <div class="mb-1">
                                                                     <label class="form-label"
-                                                                        for="account-username">User Name</label>
-                                                                    <input type="text" class="form-control" id="userId"
-                                                                        name="userId" placeholder="name" readonly
-                                                                        value="<%=Data?.userId?.name%>" />
+                                                                        for="account-username">First Name</label>
+                                                                    <input type="text" class="form-control" id="firstName"
+                                                                        name="firstName" placeholder="firstName" readonly
+                                                                        value="<%=Data.firstName%>" />
                                                                 </div>
 
                                                                 <div class="mb-1">
                                                                     <label class="form-label"
-                                                                        for="account-username">Provider Name</label>
+                                                                        for="account-username">Last Name</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="providerName" name="providerName"
-                                                                        placeholder="name" readonly
-                                                                        value="<%-Data?.providerId?.name %>" />
+                                                                        id="lastName" name="lastName"
+                                                                        placeholder="lastName" readonly
+                                                                        value="<%-Data.lastName %>" />
                                                                 </div>
+
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                        for="account-username">email</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="email" name="email"
+                                                                        placeholder="email" readonly
+                                                                        value="<%-Data.email %>" />
+                                                                </div>
+
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                        for="account-username">Phone</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="phone" name="phone"
+                                                                        placeholder="phone" readonly
+                                                                        value="<%-Data.phone %>" />
+                                                                </div>
+
+                                                                
                                                                 <div class="mb-1">
                                                                     <label class="form-label"
                                                                         for="account-username">Message</label>
                                                                     <input type="text" class="form-control" id="message"
                                                                         name="message" placeholder="name" readonly
-                                                                        value="<%-Data?.message %>" />
+                                                                        value="<%-Data.message %>" />
                                                                 </div>
                                                               
                                                             </div>
                                                             <div class="col-12">
                                                                 <a type="reset" class="btn btn-outline-secondary mt-2"
-                                                                    href="/notificationPage">Cancel</a>
+                                                                    href="/contactUsPage">Cancel</a>
                                                             </div>
                                                         </div>
                                                     </form>
