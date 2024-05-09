@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt")
 const { tokenGenerate } = require("../jwt/jsonWebToken")
 const { Validator } = require("node-input-validator")
 const { imageupload, checkValidation } = require("../middleware/helper")
+const session = require("express-session")
 const saltRound = 10
 
 module.exports = {
@@ -40,10 +41,11 @@ module.exports = {
             }
             const password = await bcrypt.hash(req.body.password, saltRound)
             const data = await userModel.create({
-                name: req.body.name, email: req.body.email,
+                name: req.body.name, lastName: req.body.lastName, email: req.body.email,
                 password: password, image: req.body.image, contact: req.body.contact, role: req.body.role,
                 status: req.body.status
             })
+
             const token = await tokenGenerate(data._id)
             const updateResult = await userModel.findByIdAndUpdate({
                 _id: data._id
@@ -72,7 +74,7 @@ module.exports = {
                 res.redirect("/loginPage")
             }
             let Data = await userModel.find({ role: 1 })
-            res.render("boking/user", { session: req.session.users, Data })
+            res.render("admin/user.ejs", { session: req.session.users, Data })
         } catch (error) {
             console.log(error)
 
@@ -84,7 +86,7 @@ module.exports = {
                 return res.redirect("/loginPage")
             }
             let Data = await userModel.findOne({ _id: req.params.id })
-            res.render("boking/userView", { session: req.session.users, Data })
+            res.render("admin/userView", { session: req.session.users, Data })
         } catch (error) {
             console.log(error, "error");
         }

@@ -1,11 +1,12 @@
-<%-include("../common/header.ejs")%>
+<%- include("../common/header.ejs") %>
 
-  <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
-    data-menu="vertical-menu-modern" data-col=""></body>
-  <%-include("../common/navbar.ejs")%>
-    <%-include("../common/sidebar.ejs")%>
+  <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click"
+    data-menu="vertical-menu-modern" data-col="">
+  </body>
+  <%- include("../common/navbar.ejs") %>
+    <%- include("../common/sidebar.ejs") %>
 
-      <div class="app-content content ">
+      <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">
@@ -26,8 +27,8 @@
                           aria-labelledby="account-pill-general" aria-expanded="true">
                           <div class="d-flex">
                             <a href="#" class="me-25">
-                              <img src="/images/userImage/<%-Data.image %>" id="account-upload-img"
-                                class="rounded me-50" alt=" image" height="80" width="80" />
+                              <img src="/images/userImage/<%- Data.image %>" id="account-upload-img"
+                                class="rounded me-50" alt="image" height="80" width="80" />
                             </a>
                           </div>
                           <form class="validate-form mt-2">
@@ -36,32 +37,32 @@
                                 <div class="mb-1">
                                   <label class="form-label" for="account-username">Name</label>
                                   <input type="text" class="form-control" id="account-name" name="name"
-                                    placeholder="name" readonly value=<%-Data.name%> />
+                                    placeholder="Name" readonly value="<%- Data.name%>" />
                                 </div>
                               </div>
                               <div class="col-12 col-sm-6">
                                 <div class="mb-1">
-                                  <label class="form-label" for="account-username">LastName</label>
-                                  <input type="text" class="form-control" id="lastname" name="lastname"
-                                    placeholder="lastname" readonly value=<%-Data.lastname%> />
+                                  <label class="form-label" for="account-username">Last Name</label>
+                                  <input type="text" class="form-control" id="lastName" name="lastName"
+                                    placeholder="Last Name" readonly value="<%- Data.lastName%>" />
                                 </div>
                               </div>
                               <div class="col-12 col-sm-6">
                                 <div class="mb-1">
                                   <label class="form-label" for="account-e-mail">E-mail</label>
                                   <input type="email" class="form-control" id="account-e-mail" name="email"
-                                    placeholder="Email" readonly value=<%-Data.email%> />
+                                    placeholder="Email" readonly value="<%- Data.email%>" />
                                 </div>
                               </div>
                               <div class="col-12 col-sm-6">
                                 <div class="mb-1">
                                   <label class="form-label" for="account-name">Contact</label>
                                   <input type="text" class="form-control" id="contact" name="contact"
-                                    placeholder="phone" readonly value=<%-Data.contact%> />
+                                    placeholder="Phone" readonly value="<%- Data.contact%>" />
                                 </div>
                               </div>
                               <div class="col-12">
-                                <a type="reset" class="btn btn-outline-secondary mt-2" href="/getUser">Cancel</a>
+                                <a type="reset" class="btn btn-outline-secondary mt-2" href="/getUserPage">Cancel</a>
                               </div>
                             </div>
                           </form>
@@ -79,4 +80,4 @@
       <div class="sidenav-overlay"></div>
       <div class="drag-target"></div>
 
-      <%-include("../common/footer.ejs")%>
+      <%- include("../common/footer.ejs") %>

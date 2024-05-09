@@ -26,7 +26,7 @@ module.exports = {
                 if (image) req.body.image = imageupload(image, "userImage");
             }
             const data = await categoryModel.create({
-                name: req.body.name, image: req.body.imagez
+                name: req.body.name, image: req.body.image
             })
             res.redirect("/getCategoryPage")
         } catch (error) {
