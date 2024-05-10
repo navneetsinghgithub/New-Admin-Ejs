@@ -110,14 +110,22 @@
                                         </p>
                                         <form id="loginForm" action="/login" method="post">
                                             <div class="mb-3">
-                                                <label for="email" class="form-label">Email</label>
+                                                <label for="email" class="form-label" class="btn btn-outline-primary">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                                    <button class="btn btn-outline-primary" type="button" onclick="togglePasswordVisibility('password', 'password-eye')">
+                                                        <i class="feather" id="password-eye" data-feather="eye"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Sign In</button>
+                                            
+
+                                   
+                                    <button type="submit" class="btn btn-primary">Sign In</button>
                                         </form>
                             </div>
                         </div>
@@ -130,6 +138,24 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <script>
+        function togglePasswordVisibility(inputId, eyeIconId) {
+            var input = document.getElementById(inputId);
+            var eyeIcon = document.getElementById(eyeIconId);
+            if (input.type === "password") {
+                input.type = "text";
+                eyeIcon.setAttribute("data-feather", "eye"); // Change to "eye-off" when password is visible
+            } else {
+                input.type = "password";
+                eyeIcon.setAttribute("data-feather", "eye-off"); // Change to "eye" when password is hidden
+            }
+            feather.replace();
+        }
+    </script>
+
+
     <script>
         $(document).ready(function () {
             jQuery.validator.addMethod("noSpace", function (value, element) {

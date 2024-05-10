@@ -26,7 +26,6 @@ module.exports = {
                 return res.redirect("/loginPage")
             }
             const contactUsData = await contactModel.find()
-          
             res.render("notification/contactUs", { session: req.session.users, contactUsData })
         } catch (error) {
             console.log(error, "error");
@@ -45,23 +44,23 @@ module.exports = {
     //     }
     // },
 
-    getSingleContactUs: async (req, res) => {
-        try {
-            if (!req.session.users) {
-                res.redirect("/loginPage")
-            }
-            const getData = await contactModel.findOne({
-                _id: req.params.id
-            })
-            return res.json({
-                status: 200,
-                message: "get single",
-                body: getData
-            })
-        } catch (error) {
-            console.log(error, "error");
-        }
-    },
+    // getSingleContactUs: async (req, res) => {
+    //     try {
+    //         if (!req.session.users) {
+    //             res.redirect("/loginPage")
+    //         }
+    //         const getData = await contactModel.findOne({
+    //             _id: req.params.id
+    //         })
+    //         return res.json({
+    //             status: 200,
+    //             message: "get single",
+    //             body: getData
+    //         })
+    //     } catch (error) {
+    //         console.log(error, "error");
+    //     }
+    // },
 
     contactUsView: async (req, res) => {
         try {

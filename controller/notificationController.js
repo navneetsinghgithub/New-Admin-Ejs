@@ -31,43 +31,43 @@ module.exports = {
         }
     },
 
-    getNotification: async (req, res) => {
-        try {
-            if (!req.session.users) {
-                res.redirect("/loginPage")
-            }
-            const getData = await notificationModel.find().populate({
-                path: 'userId',
-                select: 'name'
-            })
-                .populate({
-                    path: 'providerId',
-                    select: 'name'
-                });
+    // getNotification: async (req, res) => {
+    //     try {
+    //         if (!req.session.users) {
+    //             res.redirect("/loginPage")
+    //         }
+    //         const getData = await notificationModel.find().populate({
+    //             path: 'userId',
+    //             select: 'name'
+    //         })
+    //             .populate({
+    //                 path: 'providerId',
+    //                 select: 'name'
+    //             });
 
-            res.render("notification/notification", { getData, session: req.session.users })
-        } catch (error) {
-            console.log(error, "error");
-        }
-    },
+    //         res.render("notification/notification", { getData, session: req.session.users })
+    //     } catch (error) {
+    //         console.log(error, "error");
+    //     }
+    // },
 
-    getSingleNotification: async (req, res) => {
-        try {
-            if (!req.session.users) {
-                res.redirect("/loginPage")
-            }
-            const getData = await notificationModel.findOne({
-                _id: req.params.id
-            })
-            return res.json({
-                status: 200,
-                message: "get single",
-                body: getData
-            })
-        } catch (error) {
-            console.log(error, "error");
-        }
-    },
+    // getSingleNotification: async (req, res) => {
+    //     try {
+    //         if (!req.session.users) {
+    //             res.redirect("/loginPage")
+    //         }
+    //         const getData = await notificationModel.findOne({
+    //             _id: req.params.id
+    //         })
+    //         return res.json({
+    //             status: 200,
+    //             message: "get single",
+    //             body: getData
+    //         })
+    //     } catch (error) {
+    //         console.log(error, "error");
+    //     }
+    // },
 
     notificationView: async (req, res) => {
         try {

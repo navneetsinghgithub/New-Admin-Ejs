@@ -134,7 +134,7 @@
         var value = button.getAttribute('value');
         $.ajax({
             type: "post",
-            url: "/status/" + _id,
+            url: "/userStatus/" + _id,
             data: {
                 status: value
             },
