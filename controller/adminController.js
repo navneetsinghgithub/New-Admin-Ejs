@@ -202,6 +202,7 @@ module.exports = {
 
     logout: async (req, res) => {
         try {
+            req.flash("msg", "Logout Successfully");
             delete req.session.users
             res.redirect('/loginPage')
         } catch (error) {

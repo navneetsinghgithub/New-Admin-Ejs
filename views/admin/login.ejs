@@ -113,18 +113,20 @@
                                                 <label for="email" class="form-label" class="btn btn-outline-primary">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" required>
                                             </div>
+
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <div class="input-group">
+                                                <div class="input-group" className="eye_ico position-absolute"   >
                                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                                     <button class="btn btn-outline-primary" type="button" onclick="togglePasswordVisibility('password', 'password-eye')">
                                                         <i class="feather" id="password-eye" data-feather="eye"></i>
                                                     </button>
+                                                    <label id="password-error" class="error" for="password"></label>
                                                 </div>
                                             </div>
                                             
+                                            
 
-                                   
                                     <button type="submit" class="btn btn-primary">Sign In</button>
                                         </form>
                             </div>
@@ -136,7 +138,8 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+  </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
