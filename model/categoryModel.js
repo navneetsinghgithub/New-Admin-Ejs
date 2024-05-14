@@ -4,8 +4,11 @@ const categorySchema = new mongoose.Schema({
     name:
         { type: String },
     image:
+        { type: String },
+    japaneseName:
         { type: String }
 })
 
 const category = mongoose.model("category", categorySchema)
 module.exports = category
+
